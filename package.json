@@ -14,7 +14,7 @@
         "build:client:server": "npm run build:prod:aot -- -e dev && npm run build:bundles -- -e dev",
         "build:dynamic": "npm run remove:dist && npm run build:client:server && npm run webpack:server && npm run remove:server",
         "start:dynamic": "npm run build:dynamic && npm run start:server",
-        "prestart":"npm run build:dynamic",
+        "prestart": "npm run build:dynamic",
         "start": "node dist/server.js | bunyan",
         "start:client": "ng serve --open"
     },
@@ -39,7 +39,6 @@
         "core-js": "^2.4.1",
         "rxjs": "^5.5.2",
         "ts-loader": "^3.1.1",
-        "typescript": "^2.4.2",
         "zone.js": "^0.8.14"
     },
     "devDependencies": {
@@ -60,6 +59,7 @@
         "karma-jasmine-html-reporter": "^0.2.2",
         "protractor": "^5.2.0",
         "ts-node": "^3.3.0",
-        "tslint": "^5.8.0"
+        "tslint": "^5.8.0",
+        "typescript": "^2.4.2"
     }
 }
