@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 
+import { TestModule } from './test/fe-test';
+
 @NgModule({
     declarations: [
         AppComponent
@@ -16,7 +18,9 @@ import { appRoutes } from './app.routes';
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes),
+
+        TestModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]
