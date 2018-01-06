@@ -1,0 +1,28 @@
+<div class="tools-split">
+	<div class="source">
+		<div class="tools-bar">
+			<strong style="color:#dd4b39; font-size:16px;">CSS解析器</strong>
+			<div class="pull-right">
+				<button type="button" class="btn btn-primary" (click)="onFormat(resultCode)">格式化</button>
+			</div>
+		</div>
+		<div class="code">
+			<textarea #dataDom class="elastic form-control" maxlength="90000" [(ngModel)]="dataCSS" [focus]="true" autosize placeholder=""></textarea>
+			<div class="code-clear" (click)="clearSource(dataDom)">✖</div>
+		</div>
+		<div class="select-document">
+			<span class="pull-left">请输入或粘贴STYLE格式字符串</span>
+			<!--<div class="length" ng-bind="checkLength(params.data, 90000)"></div>-->
+		</div>
+	</div>
+	<div class="result">
+		<div class="tools-bar">
+			<!--<button type="button" class="btn btn-default" (click)="onFormat(resultCode, 'ordinary')">普通压缩</button>-->
+			<!--<button type="button" class="btn btn-default" (click)="onFormat(resultCode, 'pack')">高级压缩</button>-->
+			<!--<button type="button" class="btn btn-default" (click)="onFormat(resultCode, 'row')">格式单行</button>-->
+			<!--<button type="button" class="btn btn-default" (click)="onFormat(resultCode, 'rows')">格式多行</button>-->
+			<button type="button" class="btn btn-default" (click)="selectAllClicked(resultCode)">全选&复制</button>
+		</div>
+		<div class="code" #resultCode></div>
+	</div>
+</div>

@@ -1,0 +1,47 @@
+@import "../../../../theme/mixin.less";
+.tools-split { padding: 0 30px;
+    .tools-bar {
+        height: 31px; line-height: 31px; font-size: 14px; margin: 30px 0 10px;
+        .dropdown { float: left;
+            ul { min-width: 100px; }
+            li { text-align: left; }
+        }
+        .btn {
+            font-size: 13px; line-height: 1.8em; float: left;
+            cursor: pointer !important; border: 0;
+        }
+        .btn-default { margin: 0 0 0 -1px; border-left: 1px solid #f0f4f7; }
+    }
+    pre { background-color: transparent; border: 0; font-family: 'DejaVu Sans Mono', 'Courier New', monospace; }
+    .code { min-height: 200px; position: relative; font-family: 'DejaVu Sans Mono', 'Courier New', monospace;
+        .comment { color: #b9b9b9; }
+        .selector { color: #ff0000; }
+        .selector.type, .selector .type { }
+        .selector.class, .selector .class { }
+        .selector.pseudo, .selector .pseudo { }
+        .property { color: #ff99ff; }
+        .property.name, .property .name { color: #0099ff; }
+        .property.value, .property .value { color: #ff9900; }
+        .property.name.vendor { }
+    }
+    .code-clear { width: 20px; height: 20px; line-height: 22px; position: absolute; top: 2px; right: 2px; text-align: center; font-size: 12px; font-weight: normal; cursor: pointer;
+        &:hover { background-color: #e0e4e6; }
+    }
+    .source,
+    .result { float: left; width: 45%; height: 100%; min-height: 100%; }
+    .source {
+        textarea { line-height: 150%; font-size: 12px; background-color: #ffffff; word-wrap: break-word; resize: none; height: auto; min-height: inherit; padding: 10px; .border-radius(@border-radius-base);
+            &:focus { box-shadow: inset 0 1px 2px rgba(27, 31, 35, 0.075), 0 0 0 0.2em rgba(3, 102, 214, 0.2) }
+        }
+    }
+    .result { float: right; width: 54%;
+        .code { background-color: #eaeaea; .border-radius(@border-radius-base); }
+    }
+    .select-document { height: 16px; font-size: 11px; pointer-events: none;
+        .length {
+            font: 400 11px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+            float: right;
+            color: rgba(0, 0, 0, 0.38);
+        }
+    }
+}

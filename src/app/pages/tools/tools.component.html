@@ -1,0 +1,13 @@
+<div class="nav-tab-fixed">
+	<div class="nav-tab">
+		<ul>
+			<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+				<a [routerLink]="['/tools']">JSON解析器</a>
+			</li>
+			<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+				<a [routerLink]="['/tools','css']">CSS解析器</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<router-outlet></router-outlet>

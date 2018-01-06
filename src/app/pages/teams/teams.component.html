@@ -1,0 +1,41 @@
+<div class="toolbar">
+    <div class="dropdown pull-left" dropdown>
+        <button class="btn btn-default">所有团队<span class="caret"></span></button>
+        <ul class="dropdown-list">
+            <li (click)="getTeams()">所有团队</li>
+            <li (click)="getTeams('my')">我的团队</li>
+            <li (click)="getTeams('join')">加入的团队</li>
+        </ul>
+    </div>
+    <div class="search pull-left">
+        <input type="text" class="form-control" debounce [debounceTime]="300" #search (change)="findByName(search.value)" autocomplete="off" placeholder="搜索">
+    </div>
+    <ul class="pull-right items">
+        <li>
+            <button class="btn btn-primary" (click)="addTeam()">✚创建团队</button>
+        </li>
+        <li>
+            <button class="btn btn-default"><i class="fa fa-list"></i></button>
+        </li>
+        <li>
+            <button class="btn btn-default"><i class="fa fa-info"></i></button>
+        </li>
+    </ul>
+</div>
+<ul class="teams">
+    <li class="card" *ngFor="let team of teams">
+        <div class="card-head">
+            <a class="name" [routerLink]="['/projects']">{{team.name}}</a>
+            <span class="actions">
+                <i class="fa fa-pencil" (click)="editTeam(team)"></i>
+                <i class="fa fa-remove" (click)="delTeam(team)"></i>
+            </span>
+        </div>
+        <div class="card-body">{{team.desc}}</div>
+        <div class="card-foot">
+            <span class="belong">@{{team.author}}</span>
+            <span class="time">{{team.uTime | DatePipe}}</span>
+        </div>
+    </li>
+    <div class="not-find" *ngIf="!teams.length">没有数据</div>
+</ul>

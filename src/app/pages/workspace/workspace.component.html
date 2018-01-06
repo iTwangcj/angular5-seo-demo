@@ -1,0 +1,114 @@
+<div class="workspace" #workspace>
+    <div class="row-nav">
+        <div class="head">
+            <input type="text" class="form-control" placeholder="搜索">
+        </div>
+        <div class="interface-folder" *ngFor="let module of modules">
+            <div class="folder" [ngClass]="module._id === moduleId ? 'active' : ''" (click)="interfaceToggle(module._id, true)">
+                <i class="folder-icon fa" [ngClass]="{'fa-folder-open-o':module._id === moduleId, 'fa-folder-o':module._id !== moduleId}"></i>
+                <p class="name">{{module.name}}</p>
+                <p class="number">{{module.musterCount || 0}}个请求</p>
+                <div class="actions">
+                    <div class="more fa fa-angle-down"></div>
+                    <div class="dropdown" dropdown>
+                        <span class="fa fa-ellipsis-h"></span>
+                        <ul class="dropdown-list pull-right">
+                            <li (click)="editFolder('edit', module)"><i class="fa fa-pencil"></i>编辑</li>
+                            <li (click)="delFolder(module)"><i class="fa fa-remove"></i>删除</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="interface" *ngIf="musters.length && module._id === moduleId">
+                <li *ngFor="let muster of musters" [ngClass]="muster._id === musterId ? 'active' : ''" (click)="updateMusterId(muster._id, muster.name)">
+                    <span class="method" [ngClass]="muster.type.toLowerCase()">{{muster.type}}</span>
+                    <span class="name">{{muster.name}}</span>
+                    <div class="actions dropdown" dropdown>
+                        <span class="fa fa-ellipsis-h"></span>
+                        <ul class="dropdown-list pull-right">
+                            <li (click)="editInterface('edit', muster)"><i class="fa fa-pencil"></i>编辑</li>
+                            <li (click)="copyInterface()"><i class="fa fa-clone"></i>复制</li>
+                            <li (click)="delInterface(muster._id)"><i class="fa fa-remove"></i>删除</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row-main">
+        <div class="tabs">
+            <ul class="items">
+                <li [ngClass]="curTabIndex === -1 ? 'active' : ''" (click)="setTabIndex(-1)"><span class="name">示例接口</span></li>
+                <li *ngFor="let tab of tabs; index as i" [ngClass]="i === curTabIndex ? 'active' : ''" (click)="setTabIndex(i, tab.musterId)"><span class="name">{{tab.name}}</span><span class="actions"><i class="fa fa-remove" (click)="removeTab(i, tab.name)"></i></span></li>
+                <li class="add" (click)="addInterface('add')">✚</li>
+            </ul>
+        </div>
+        <div class="request">
+            <form novalidate [formGroup]="formGroup" (submit)="submit(!!musterId)" (keyup.enter)="submit(!!musterId)">
+                <div class="method dropdown" dropdown>
+                    <button type="button" class="btn btn-default">{{curType}}<span class="caret"></span></button>
+                    <ul class="dropdown-list">
+                        <li *ngFor="let type of types" (click)="setType(type)">{{type}}</li>
+                    </ul>
+                </div>
+                <div class="url form-group">
+                    <input type="text" class="form-control" formControlName="url" placeholder="url">
+                </div>
+                <div class="form-group">
+                    <input id="params" type="checkbox" formControlName="matchParams" style="float: left; margin: 15px;">
+                    <label for="params" style="float: left; margin: 10px; margin-left: -10px;">匹配参数</label>
+                </div>
+                <button type="button" class="params btn btn-default" (click)="onParamsToggle()">参数</button>
+                <div class="actions">
+                    <button type="button" class="btn btn-info" [ngClass]="!musterId ? 'disabled' : ''" (click)="runner()">预览</button>
+                    <!--<button type="submit" class="btn btn-success" [ngClass]="curTabIndex === -1 || !editStatus ? 'disabled' : ''">保存</button>-->
+                    <!--<button type="button" class="btn btn-primary" [ngClass]="curTabIndex === -1 || editStatus ? 'disabled' : ''">编辑</button>-->
+
+                    <button type="submit" class="btn btn-success" [ngClass]="curTabIndex === -1 ? 'disabled' : ''" *ngIf="editStatus">保存</button>
+                    <button type="button" class="btn btn-primary" [ngClass]="curTabIndex === -1 ? 'disabled' : ''" *ngIf="!editStatus" (click)="updateEditStatus(true)">编辑</button>
+                </div>
+            </form>
+        </div>
+        <!--<div class="request-title">参数</div>-->
+        <div class="request-params" *ngIf="paramsFlag">
+            <ul class="th">
+                <li></li>
+                <li>key</li>
+                <li>value</li>
+                <li>description</li>
+            </ul>
+            <ul class="td" *ngFor="let req of reqParam; index as i">
+                <li (mouseenter)="setParamIndex(i)" (mouseleave)="setParamIndex(-1)">
+                    <i class="fa fa-plus" *ngIf="i === reqParam.length - 1" (click)="addParams()"></i>
+                    <i class="fa fa-times" *ngIf="i === curParamIndex" (click)="delParams(i)"></i>
+                </li>
+                <li><input type="text" #keyDom placeholder="key" value="{{req.key}}" (keyup)="changeInput(typeKeys[0], i, keyDom.value)"></li>
+                <li><input type="text" #valueDom placeholder="value" value="{{req.value}}" (keyup)="changeInput(typeKeys[1], i, valueDom.value)"></li>
+                <li><input type="text" #descDom placeholder="description" value="{{req.desc}}" (keyup)="changeInput(typeKeys[2], i, descDom.value)"></li>
+            </ul>
+        </div>
+        <!--<div class="request-title">消息头</div>
+        <div class="request-params">
+            <ul class="th">
+                <li></li>
+                <li>key</li>
+                <li>value</li>
+                <li>description</li>
+            </ul>
+            <ul class="td">
+                <li><i class="fa fa-plus"></i></li>
+                <li><input type="text" placeholder="key"></li>
+                <li><input type="text" placeholder="value"></li>
+                <li><input type="text" placeholder="description"></li>
+            </ul>
+        </div>-->
+        <div class="request-title">响应
+            <button class="btn btn-info" style="margin-left: 8px;" (click)="transform()">转换</button>
+        </div>
+        <div class="editor">
+            <div class="json-editor" id="jsonEditor"></div>
+            <div class="bar"></div>
+            <div class="json-views" id="jsonViews"></div>
+        </div>
+    </div>
+</div>

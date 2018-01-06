@@ -1,0 +1,87 @@
+<div class="stat" #stat>
+    <div class="row-left">
+        <div class="box">
+            <div class="head">
+                <h2>项目数
+                    <small>(30天)</small>
+                </h2>
+            </div>
+            <div class="chart" [chart]="chartProNumber"></div>
+        </div>
+        <div class="box">
+            <div class="head">
+                <h2>活跃项目
+                    <small>(30天)</small>
+                </h2>
+            </div>
+            <div class="chart" [chart]="chartProActive"></div>
+        </div>
+    </div>
+    <div class="row-center">
+        <div class="box">
+            <div class="head">
+                <h2>地域分布</h2>
+            </div>
+            <div class="chart" [chart]="chartMap"></div>
+        </div>
+        <div class="box">
+            <div class="head">
+                <h2>今日实时</h2>
+            </div>
+            <div class="real-date">
+                <dl>
+                    <dt>版本</dt>
+                    <dd>2.0</dd>
+                </dl>
+                <dl>
+                    <dt>用户
+                        <small>人</small>
+                    </dt>
+                    <dd>133</dd>
+                </dl>
+                <dl>
+                    <dt>模拟
+                        <small>次</small>
+                    </dt>
+                    <dd>1,345</dd>
+                </dl>
+                <dl>
+                    <dt>团队
+                        <small>个</small>
+                    </dt>
+                    <dd>13</dd>
+                </dl>
+                <dl>
+                    <dt>项目
+                        <small>个</small>
+                    </dt>
+                    <dd>143</dd>
+                </dl>
+                <dl>
+                    <dt>接口
+                        <small>数</small>
+                    </dt>
+                    <dd>1,334</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="row-right">
+        <div class="box">
+            <div class="head">
+                <h2>活跃项目排行
+                    <small>(30天)</small>
+                </h2>
+            </div>
+            <div class="chart" [chart]="chartProActiveRanking"></div>
+        </div>
+        <div class="box">
+            <div class="head">
+                <h2>活跃用户排行
+                    <small>(30天)</small>
+                </h2>
+            </div>
+            <div class="chart" [chart]="chartUserActiveRanking"></div>
+        </div>
+    </div>
+</div>

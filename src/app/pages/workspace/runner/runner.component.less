@@ -1,0 +1,26 @@
+@import "../../../../theme/mixin.less";
+.runner {
+    min-height: 400px; position: relative; margin: -15px;
+    .tabs {
+        height: 55px; font-size: 12px; color: #444444; background-color: #f6f6f6; border-bottom: 1px solid #d8d4d4;
+        .border-top-radius(3px);
+        li {
+            display: inline-block; height: 45px; line-height: 45px;
+            border-bottom: 3px solid transparent; margin:10px 15px 0 0; padding: 0 15px; min-width: 80px;
+            .border-top-radius(@border-radius-base);
+            cursor: pointer;text-align: center; font-size: 16px; font-weight: 600;
+            &.active { border-bottom-color: @brand-primary; }
+            &:hover { }
+        }
+    }
+    .runner-body {
+        padding: 5px 0; color: #333333; height: 500px; overflow: auto;
+        strong, .key { display: inline-block; padding-right: 5px; font-weight: 600; color: #111111; }
+        .key { color: @brand-danger; }
+        .link { color: @link-color; }
+        .desc { display: inline-block; margin-left: 5px; padding: 0 3px; color: #333333; background-color: #eeeeee; .border-radius(3px); }
+        li { border-bottom: 1px solid #eeeeee; padding: 5px 12px; }
+        .no-border li { border: 0; }
+    }
+    .runner-views{height: 500px;}
+}

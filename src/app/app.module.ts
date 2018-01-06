@@ -1,18 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule, ToastOptions } from 'ng2-toastr';
 
+import { AppRoutes } from './app.routes';
 import { AppComponent } from './app.component';
-import { appRoutes } from './app.routes';
+import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { PagesComponent } from './pages/pages.component';
-import { ToastModule, ToastOptions } from 'ng2-toastr';
-import { SharedModule } from './shared/shared.module';
+import { HttpService } from './service/http.service';
 import { CUSTOM_ERROR_MESSAGES } from './shared/validate';
 import { CUSTOM_PATTERN_MESSAGE } from './shared/validate-pattern';
-import { HttpService } from './service/http.service';
 import { AuthService } from './service/auth.service';
 import { SecureModule } from './secure/secure.module';
 
@@ -32,15 +32,14 @@ export class CustomOption {
         PagesComponent
     ],
     imports: [
-        BrowserModule.withServerTransition({ appId: 'ang5-seo' }),
+        BrowserModule.withServerTransition({ appId: 'mock-appId' }),
+        HttpClientModule,
         BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
         CoreModule,
         SecureModule,
         SharedModule.forRoot(),
         ToastModule.forRoot(),
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(AppRoutes)
     ],
     providers: [
         { provide: ToastOptions, useClass: CustomOption },
@@ -50,4 +49,5 @@ export class CustomOption {
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

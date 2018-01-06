@@ -1,0 +1,36 @@
+<form novalidate [formGroup]="formGroup" (submit)="submit()" (keyup.enter)="submit()">
+    <ul class="validate-form">
+        <li class="form-group">
+            <input type="text" id="name" class="form-control" formControlName="name" placeholder="名称" focus="true" autocomplete="off" required>
+            <label for="name" class="float-label">名称</label>
+        </li>
+        <li>
+            <p style="padding-bottom: 5px;">添加成员</p>
+            <div class="select-box">
+                <div class="head">
+                    <input type="text" class="form-control" #search (keyup)="searchMember(search.value)" autocomplete="off" placeholder="搜素成员">
+                </div>
+                <ul class="select-body items-inline" *ngIf="tmpMembers.length">
+                    <li *ngFor="let tmpMember of tmpMembers">
+                        <span class="name">{{tmpMember.memberName}}</span>
+                        <i class="fa fa-remove" (click)="delMember(tmpMember.memberId)"></i>
+                    </li>
+                </ul>
+                <div class="auto-completer" style="top: 67px; width: 98%; margin-left: 3px; display: block;" #membersDom *ngIf="members.length">
+                    <ul>
+                        <li *ngFor="let member of members" (click)="addMember(membersDom, search, member)">{{member.name}}</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="form-group area">
+            <textarea id="desc" class="textarea form-control" formControlName="desc" placeholder="说明" required></textarea>
+            <label for="desc" class="float-label">说明</label>
+        </li>
+    </ul>
+    <div class="modal-footer">
+        <button type="reset" class="btn btn-default" m-close>取消</button>
+        <button type="submit" class="btn btn-primary" *ngIf="params.type === 'add'">添加</button>
+        <button type="submit" class="btn btn-primary" *ngIf="params.type === 'edit'">更新</button>
+    </div>
+</form>

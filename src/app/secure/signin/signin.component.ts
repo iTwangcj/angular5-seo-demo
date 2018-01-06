@@ -1,12 +1,13 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { isPlatformBrowser } from '@angular/common';
 import { CaptchaService } from '../captcha/captcha.service';
 import { HttpService } from '../../service/http.service';
 import { PATTERNS } from '../../shared/validate/tokens';
 import { environment } from '../../../environments/environment';
 import { UserService } from '../../service/user.service';
-import { Common, Message, Crypt } from '../../utils';
+import { Common, Crypt, Message } from '../../utils';
 
 declare const particlesJS: any; // 引入描述组件(未定义不能使用)
 
@@ -34,7 +35,8 @@ export class SigninComponent implements OnInit {
                  private fb: FormBuilder,
                  private captchaService: CaptchaService,
                  private userService: UserService,
-                 private http: HttpService) {
+                 private http: HttpService,
+                 @Inject(PLATFORM_ID) private platformId: Object) {
     }
 
     ngOnInit (): void {
@@ -44,8 +46,10 @@ export class SigninComponent implements OnInit {
             remember: [''],
             validateCode: ['']
         });
-        this.initLoginNum();
         particlesJS.load('particles', './assets/particles.json');
+        if (isPlatformBrowser(this.platformId)) {
+            this.initLoginNum();
+        }
     }
 
     /**

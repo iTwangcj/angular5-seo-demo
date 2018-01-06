@@ -1,0 +1,16 @@
+<form novalidate [formGroup]="formGroup" (submit)="submit()" (keyup.enter)="submit()">
+    <ul class="validate-form">
+        <li class="form-group">
+            <input type="text" id="name" class="form-control" formControlName="name" placeholder="名称" focus="true" required>
+            <label for="name" class="float-label">名称</label>
+        </li>
+        <li class="form-group area">
+            <textarea id="desc" class="textarea form-control" formControlName="desc" placeholder="说明" required></textarea>
+            <label for="desc" class="float-label">说明</label>
+        </li>
+    </ul>
+    <div class="modal-footer">
+        <button type="reset" class="btn btn-default" m-close>取消</button>
+        <button type="submit" class="btn btn-primary">更新</button>
+    </div>
+</form>

@@ -1,0 +1,32 @@
+<div class="runner">
+    <ul class="tabs">
+        <li (click)="onSwitch(1)" [ngClass]="{'active':tabIndex === 1}">响应</li>
+        <li (click)="onSwitch(2)" [ngClass]="{'active':tabIndex === 2}">参数</li>
+        <li (click)="onSwitch(3)" [ngClass]="{'active':tabIndex === 3}">消息头</li>
+    </ul>
+    <div class="runner-views" id="runnerViews" [style.display]="tabIndex === 1 ? 'block' : 'none'"></div>
+    <div class="runner-body" *ngIf="tabIndex === 2">
+        <ul>
+            <li><strong>请求参数:</strong></li>
+            <li *ngIf="reqParam.length">
+                <pre>{{reqJsonStr}}</pre>
+            </li>
+            <li *ngIf="!reqParam.length">此请求无参数</li>
+        </ul>
+    </div>
+    <div class="runner-body" *ngIf="tabIndex === 3">
+        <ul>
+            <li><strong>请求网址:</strong>{{serverName}}/mock/{{params.pNum}}{{url}}</li>
+            <li><strong>请求方法:</strong>{{type}}</li>
+            <li><strong>远程地址:</strong>{{serverName}}</li>
+            <li><strong>状态码:</strong> <span style="color:#5cb85c">{{status}}</span></li>
+        </ul>
+        <ul>
+            <li><strong>响应头:</strong></li>
+            <li *ngIf="headerJsonStr">
+                <pre>{{headerJsonStr}}</pre>
+            </li>
+            <li *ngIf="!headerJsonStr">此请求无响应头</li>
+        </ul>
+    </div>
+</div>

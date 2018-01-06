@@ -1,0 +1,70 @@
+@import "../../../theme/mixin";
+.stat {
+    min-height: 700px; padding: 15px 15px 0;
+    display: -webkit-flex; display: flex; flex-flow: row;
+    //background-color: #050852;
+    //background-image: url('../../../assets/img/stat.jpg');
+    //background-repeat: no-repeat;
+    //background-size: cover;
+    //background-attachment: fixed;
+
+    background: -webkit-linear-gradient(135deg, #eb816f, #656f8d, #656f8d, #eb816f);
+    background: linear-gradient(135deg, #eb816f, #656f8d, #656f8d, #eb816f);
+    //background-image: linear-gradient(#656f8d, #eb816f);
+}
+/*box*/
+.box {
+    -webkit-flex: 1;flex: 1;
+    margin-bottom: 15px;
+    //background-color: #656f8d;
+    //border:1px solid @border-color;
+    background-color: rgba(9, 21, 71, .5);
+    .border-radius(@border-radius-base);
+    color: #fff;
+    .head { padding: 0 1.5em; height: 40px; line-height: 40px; font-size: 16px;
+        h2 { position: relative; font-size: 16px; font-weight: normal; line-height: inherit; padding-left: 7px;
+            &:before { content: ' '; position: absolute;left: -2px;top: 12px; width: 3px; background-color: #ef5b25; color: #ef5b25; font-size: 1px; padding: 0; margin: 0; height: 16px; overflow: hidden;}
+            small { color: #ffffff; -webkit-transform: scale(0.80); transform: scale(0.80);}
+        }
+    }
+    .chart { min-height: 88%; position: relative; padding: 0 1em;}
+}
+//.row-left {background-color: #1b6d85}
+//.row-right {background-color: #8a4182}
+//.row-center {background-color: #985f0d}
+.row-left, .row-right {-webkit-flex: 1; flex: 1; display: -webkit-flex;display: flex;flex-direction: column; align-items: stretch;}
+.row-center {width: 50%; margin: 0 15px; display: -webkit-flex;display: flex;flex-direction: column; align-items: stretch;
+    .box:first-child {flex: 6.5;
+        .head {
+            h2 { padding-left: 7px;
+                &:before { left: 0;}
+            }
+        }
+        //.chart{padding: 0;}
+    }
+    .box:last-child {flex: 3.5;}
+}
+//.row-left .box:last-child, .row-right .box:last-child, .row-center .box:last-child {margin-bottom: 0;}
+.real-date {
+    padding: 0 1.5em; position: relative;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    flex-wrap: wrap;
+    -webkit-align-items: center;
+    ins { text-decoration: none;}
+    dl { width: 32%; height: 100px;margin: 0 6px 6px 0; padding: 0.5em;border: 1px solid @gray-lighter; .border-radius(@border-radius-base);
+        //&:hover {background-color: #0c59b3; cursor: default;}
+    }
+    dt { font-size: 15px; padding-top: 3px;
+        small { padding-left:3px; -webkit-transform: scale(0.80); transform: scale(0.80); font-size: 10px; .opacity(.5);}
+    }
+    dd { overflow: hidden; zoom: 1;
+        height: 50px; line-height: 50px; font-size: 28px; text-align: right; color: #ef5b25; font-weight: normal; font-family: "Arial", sans-serif;
+        .value {
+            display: inline-block; width: 16px; height: 23px; line-height: 23px; color: #ffffff; font-size: 12px; text-indent: -9999em; overflow: hidden;
+            background: url('../../../assets/img/number.png') no-repeat 0 0;
+        }
+    }
+}

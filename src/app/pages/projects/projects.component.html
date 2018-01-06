@@ -1,0 +1,46 @@
+<div class="toolbar">
+    <div class="dropdown pull-left" dropdown>
+        <button class="btn btn-default">所有项目<span class="caret"></span></button>
+        <ul class="dropdown-list">
+            <li (click)="getProjects()">所有项目</li>
+            <li (click)="getProjects('my')">我的项目</li>
+            <li (click)="getProjects('join')">加入的项目</li>
+        </ul>
+    </div>
+    <div class="search pull-left">
+        <input type="text" class="form-control" debounce [debounceTime]="300" #search (change)="findByName(search.value)" placeholder="搜索">
+        <div class="auto-completer">
+            <ul>
+                <li>项目名称</li>
+            </ul>
+        </div>
+    </div>
+    <ul class="pull-right items">
+        <li>
+            <button class="btn btn-primary" (click)="addPro()">✚创建项目</button>
+        </li>
+        <li>
+            <button class="btn btn-default"><i class="fa fa-list"></i></button>
+        </li>
+        <li>
+            <button class="btn btn-default"><i class="fa fa-info-circle"></i></button>
+        </li>
+    </ul>
+</div>
+<ul class="projects">
+    <li class="card" *ngFor="let project of projects">
+        <div class="card-head">
+            <a class="name" [routerLink]="['/workspace', project._id]">{{project.name}}</a>
+            <span class="actions">
+                <i class="fa fa-pencil" (click)="editPro(project)"></i>
+                <i class="fa fa-remove" (click)="delPro(project)"></i>
+            </span>
+        </div>
+        <div class="card-body">{{project.desc}}</div>
+        <div class="card-foot">
+            <span class="belong">@{{project.author}}</span>
+            <span class="time">{{project.uTime | DatePipe}}</span>
+        </div>
+    </li>
+    <div class="not-find" *ngIf="!projects.length">没有数据</div>
+</ul>

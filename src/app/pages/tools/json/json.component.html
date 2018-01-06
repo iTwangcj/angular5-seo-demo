@@ -1,0 +1,29 @@
+<div class="tools-split">
+	<div class="source">
+		<div class="tools-bar">
+			<strong style="color:#dd4b39; font-size:16px;">JSON解析器</strong>
+			<div class="pull-right">
+				<button type="button" class="btn btn-primary" (click)="onFormatJSON(resultJson)">格式化</button>
+			</div>
+		</div>
+		<div class="code">
+			<textarea #dataDom class="elastic form-control" maxlength="90000" [(ngModel)]="dataJSON" [focus]="true" autosize placeholder=""></textarea>
+			<div class="code-clear" (click)="clearSource(dataDom)">✖</div>
+		</div>
+		<div class="select-document">
+			<span class="pull-left">请输入或粘贴JSON格式字符串</span>
+			<!--<div class="length" ng-bind="checkLength(params.data, 90000)"></div>-->
+		</div>
+	</div>
+	<div class="result">
+		<div class="tools-bar">
+			<button type="button" class="btn btn-default" (click)="selectAllClicked(resultJson)">全选</button>
+			<button type="button" class="btn btn-default" (click)="collapseAllClicked(resultCode)">收起</button>
+			<button type="button" class="btn btn-default" (click)="expandAllClicked(resultCode)">展开</button>
+			<button type="button" class="btn btn-default" (click)="onShowType(resultJson)">{{typeText}}</button>
+		</div>
+		<div class="code" #resultCode>
+			<pre #resultJson class="json-code"></pre>
+		</div>
+	</div>
+</div>

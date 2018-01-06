@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChartModule } from 'angular-highcharts';
 import { ModalModule } from './modal';
 import { FormValidationModule } from './validate';
 import { PaginationModule } from './pagination';
@@ -23,6 +24,7 @@ export class SharedModule {
             FormsModule,
             ReactiveFormsModule,
             FormValidationModule.forRoot(),
+            ChartModule,
             ModalModule.forRoot(),
             TooltipModule.forRoot(),
             SpinModule.forRoot(),

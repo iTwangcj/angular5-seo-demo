@@ -1,0 +1,35 @@
+<div id="aside">
+	<div class="drawer">
+		<div class="head">
+			<span class="pull-left">我的账户</span>
+			<div class="close">×</div>
+		</div>
+		<div class="tree-dl">
+			<dl>
+				<dt>账户管理</dt>
+				<dd><a [routerLink]="['/account']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">个人信息</a></dd>
+				<dd><a [routerLink]="['/account','settings']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">账户设置</a></dd>
+				<dd><a [routerLink]="['/account','myMessages']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">我的消息</a></dd>
+			</dl>
+			<dl>
+				<!--<dl *ngIf="global.user.grade == 0 || global.user.grade == -1">-->
+				<dt>系统管理</dt>
+				<dd><a [routerLink]="['/account','users']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">用户管理</a></dd>
+				<dd><a [routerLink]="['/account','teams']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">团队管理</a></dd>
+				<dd><a [routerLink]="['/account','projects']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">项目管理</a></dd>
+				<dd><a [routerLink]="['/account','messages']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">消息管理</a></dd>
+				<dt>数据管理</dt>
+				<dd><a [routerLink]="['/account','db']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">数据备份</a></dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div id="main">
+	<ul class="breadcrumb">
+		<li><a href="javascript:;" class="back" (click)="goBack()">&#171;<span>返回</span></a></li>
+	</ul>
+	<div class="tree-bar" style="text-align:right; height: 40px; line-height: 40px; padding:0 15px;background-color:#ffffff;">
+		<button type="button" class="btn btn-default">☰</button>
+	</div>
+	<router-outlet></router-outlet>
+</div>

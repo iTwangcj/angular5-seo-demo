@@ -1,0 +1,96 @@
+<div id="aside">
+	<div class="drawer">
+		<div class="head">
+			<input type="text" class="form-control" placeholder="搜索文档...">
+			<div class="close" aside-click="aside">×</div>
+		</div>
+		<div class="tree-dl">
+			<dl>
+				<dt>创建文档</dt>
+				<dd><a href="javascript:;" (click)="goToView('SS')">登录/注册</a></dd>
+				<dd><a href="javascript:;" (click)="goToView('TG')">创建团队/组</a></dd>
+				<dd><a href="javascript:;" (click)="goToView('PRO')">创建项目</a></dd>
+				<dd><a href="javascript:;" (click)="goToView('MK')">创建模块/接口</a></dd>
+				<dt>工作区</dt>
+				<dd><a href="javascript:;" (click)="goToView('GZQZT')">工作区状态</a></dd>
+				<dd><a href="javascript:;" (click)="goToView('FF')">接口文档结构</a></dd>
+				<dd><a href="javascript:;" (click)="goToView('EDB')">导出接口数据</a></dd>
+				<dd><a href="javascript:;" (click)="goToView('JT')">接口测试</a></dd>
+				<dt>前端工具</dt>
+				<dd><a href="javascript:;" (click)="goToView('MDB')">Mock数据生成</a></dd>
+				<dd><a href="javascript:;" (click)="goToView('JXY')">JSON解析器</a></dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div id="main">
+	<div class="docs">
+		<div class="hero">
+			<h1>FEMOCK 用户手册</h1>
+			<h2>USER MANUAL</h2>
+		</div>
+		<div class="items">
+			<h2>创建文档</h2>
+			<dl>
+				<dt id="SS">登录/注册</dt>
+				<dd>点击页面顶部“<a [routerLink]="['/login']">注册</a>”进入注册页面，设置FEMock ID、登陆密码即可完成注册。</dd>
+			</dl>
+			<dl>
+				<dt id="TG">创建团队/组</dt>
+				<dd>
+					<p>进入“<a [routerLink]="['/teams']">团队</a>"页面：</p>
+					<p>1、点击“创建团队”，设置团队名称、权限（仅团队成员可见：只有加入在该团队中的成员可见，全员可见：系统中所有用户都可见）、描述即可完成创建团队。</p>
+					<p>2、创建团队成功后，点击“创建小组”设置小组名称、描述、添加小组成员即可完成创建小组。</p>
+				</dd>
+			</dl>
+			<dl>
+				<dt id="PRO">创建项目</dt>
+				<dd>进入“<a [routerLink]="['/projects']">项目</a>”页面，点击“✚”，设置项目名称、归属、描述即可完成创建项目。</dd>
+			</dl>
+			<dl>
+				<dt id="MK">创建模块/接口</dt>
+				<dd>
+					<p>1、点击“某项目”进入项目主页，然后点击“创建模块”，设置名称、描述即可完成创建模块。</p>
+					<p>2、创建模块成功后，点击“创建接口”，设置接口名称、请求方法、请求地址、描述即可完成创建接口。</p>
+					<p><strong>注意：完成创建接口并未保存，当编辑完后点击"保存"按钮才被提交。</strong></p>
+				</dd>
+			</dl>
+		</div>
+		<div class="items">
+			<h2>工作区</h2>
+			<dl>
+				<dt id="GZQZT">工作区状态</dt>
+				<dd>选择已创建好的“某接口"，点击“编辑”，此时已激活编辑状态。点击“取消编辑"即锁住工作区，不可编辑内容。</dd>
+			</dl>
+			<dl>
+				<dt id="FF">接口文档结构</dt>
+				<dd>
+					<p>FEMock接口文档中的每个接口，是按照模块划分整理，一个项目中，可以有多个模块。也可以理解一个模块就是一个页面也是可以的。</p>
+					<p>1、基本参数：由请求名称、请求方法、请求网址、描述组成。</p>
+					<p>2、消息头</p>
+					<p>3、请求参数</p>
+					<p>3、请求相应</p>
+				</dd>
+			</dl>
+			<dl>
+				<dt id="EDB">导出接口数据</dt>
+				<dd>在文档编辑区，点击右上角“•••” => 导出JSON、导出PDF、导出Markdown即可导出你想要的格式。</dd>
+			</dl>
+			<dl>
+				<dt id="JT">接口测试</dt>
+				<dd>在文档编辑区，点击右上角“运行”，查看接口状态及返回结果。</dd>
+			</dl>
+		</div>
+		<div class="items">
+			<h2>前端工具</h2>
+			<dl>
+				<dt id="MDB">Mock数据生成</dt>
+				<dd>Mock工具可以分析接口文档的结构，来生成自测用的数据。如何填写Mock规则，请访问<a href="http://mockjs.com" target="_blank">MockJS文档</a>。</dd>
+			</dl>
+			<dl>
+				<dt id="JXY">JSON解析器</dt>
+				<dd>Json格式验证、格式化、高亮、类型、折叠。</dd>
+			</dl>
+		</div>
+	</div>
+</div>

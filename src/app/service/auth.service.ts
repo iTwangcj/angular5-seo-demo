@@ -10,7 +10,7 @@ export class AuthService implements CanActivate {
     canActivate (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         if (route.data && route.data.noAllow) { // 不允许登陆后再进入的路由
             if (this.userService.isLogin) {
-                this.router.navigateByUrl('teams');
+                this.router.navigateByUrl('teams').catch();
                 return false;
             }
             return true;
@@ -18,7 +18,7 @@ export class AuthService implements CanActivate {
             if (this.userService.isLogin) {
                 return true;
             }
-            this.router.navigateByUrl('login');
+            this.router.navigateByUrl('login').catch();
             return false;
         }
     }

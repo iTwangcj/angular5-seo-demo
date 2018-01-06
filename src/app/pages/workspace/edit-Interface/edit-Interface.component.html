@@ -1,0 +1,37 @@
+<form novalidate [formGroup]="formGroup" (submit)="submit()" (keyup.enter)="submit()">
+    <ul class="validate-form">
+        <li class="form-group">
+            <input type="text" id="name" class="form-control" formControlName="name" placeholder="名称" focus="true" autocomplete="off" required>
+            <label for="name" class="float-label">名称</label>
+        </li>
+        <li>
+            <p style="padding-bottom: 5px;">选择模块</p>
+            <div class="select-box">
+                <div class="head form-group">
+                    <input type="text" class="form-control" formControlName="moduleName" #moduleDom (keyup)="searchMember(moduleDom.value)" autocomplete="off" placeholder="搜索模块">
+                    <button type="button" class="btn btn-default" (click)="showAddFolder()">✚</button>
+                </div>
+                <ul class="select-body items-block" *ngIf="tmpModules.length || folderOpen">
+                    <li class="add" *ngIf="folderOpen">
+                        <i class="fa fa-folder-o"></i>
+                        <input type="text" class="form-control" [focus]="folderOpen" #addModule placeholder="模块名称">
+                        <button type="button" class="btn btn-primary check" (click)="addFolder(addModule.value, null, true)"><i class="fa fa-check"></i></button>
+                    </li>
+                    <li *ngFor="let tmpModule of tmpModules" (click)="addFolder(tmpModule.name, tmpModule._id)"><i class="fa fa-folder-o"></i>{{tmpModule.name}}</li>
+                </ul>
+                <ul class="select-body items-block" *ngIf="!tmpModules.length && !folderOpen">
+                    <li style="color: red;">暂无模块{{moduleDom.value}}, 请点击✚号创建</li>
+                </ul>
+            </div>
+        </li>
+        <li class="form-group area">
+            <textarea id="desc" class="textarea form-control" formControlName="desc" placeholder="说明" required></textarea>
+            <label for="desc" class="float-label">说明</label>
+        </li>
+    </ul>
+    <div class="modal-footer">
+        <button type="reset" class="btn btn-default" m-close>取消</button>
+        <button type="submit" class="btn btn-primary" *ngIf="params.type === 'add'">添加到</button>
+        <button type="submit" class="btn btn-primary" *ngIf="params.type === 'edit'">更新</button>
+    </div>
+</form>
