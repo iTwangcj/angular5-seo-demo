@@ -1,0 +1,20 @@
+<div class="auth-form" *ngIf="!sendEmail">
+    <h1>FEMock</h1>
+    <h2>重设密码</h2>
+	<form novalidate [formGroup]="retPwdForm" (validSubmit)="onSubmit()">
+		<ul class="items">
+			<li class="form-group">
+				<input type="text" id="email" class="form-control" formControlName="email" placeholder="FEMock ID" [focus]="true" required>
+                <label for="email" class="float-label">邮箱地址</label>
+			</li>
+		</ul>
+		<div class="button">
+			<button type="submit" class="btn btn-primary btn-block" >发送密码重置邮件</button>
+		</div>
+	</form>
+</div>
+<div class="panel-verify" *ngIf="sendEmail">
+    <h2>邮件已发送</h2>
+    <p class="msg"><span>一封邮件已经发送至你的邮箱</span> {{retPwdForm.controls['email']?.value}}</p>
+    <p>请跟随邮件里的引导来重设你的登录密码</p>
+</div>

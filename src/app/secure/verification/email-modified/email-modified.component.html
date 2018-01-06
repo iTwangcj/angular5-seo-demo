@@ -1,0 +1,7 @@
+<div class="panel-verify">
+    <h2 translate>修改 FEMock ID</h2>
+    <p class="msg">{{msg}}</p>
+    <a [routerLink]="['/login']" class="btn btn-success btn-lg" *ngIf="!confirm">立即登录</a>
+    <button class="btn btn-success btn-lg" (click)="validateNewEmail()" ng-if="check">立即验证</button>
+    <p style="color: red" *ngIf="modifiedText">{{modifiedText}}</p>
+</div>

@@ -1,0 +1,21 @@
+export const Message = {
+    UOK: { code: 200, msg: '成功' },
+    Fail: { code: 500, msg: '失败' },
+    ArgsErr: { code: 501, msg: '参数错误' },
+    DataNotExist: { code: 5001, msg: '数据不存在' },
+    UnknownErr: { code: 10000, msg: '未知错误' },
+    SystemErr: { code: 10001, msg: '系统错误' },
+    NetworkAnomalies: { code: 10002, msg: '网络异常' },
+    NetWorkError: { code: 10003, msg: '网络繁忙，请稍后重试' },
+    DatabaseErr: { code: 11004, msg: '网络繁忙，请稍后重试' },
+    RequestParamError: { code: 12001, msg: '请求参数错误' },
+    ResponseParamError: { code: 12002, msg: '响应参数错误' },
+    TokenIllegal: { code: 50000, msg: 'token非法' },
+    TokenExpire: { code: 50001, msg: 'token到期' },
+    UserNotLogin: { code: 50002, msg: '未登录或登录已过期' },
+    UserLogged: { code: 50003, msg: '用户已登录' },
+    UserNotExist: { code: 50004, msg: '用户不存在' },
+    RepeatPassword: { code: 50005, msg: '密码重复' },
+    UsernameOrPwdErr: { code: 50006, msg: '账户名或密码错误' },
+    notAllow: { code: 80000, msg: '对不起，你暂无权限更改' }
+};

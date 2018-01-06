@@ -1,0 +1,24 @@
+<div class="auth-form" *ngIf="!confirm">
+	<form novalidate [formGroup]="newPwdForm" (validSubmit)="onSubmit()">
+		<h2>重新设置密码</h2>
+		<ul class="items">
+			<li class="form-group">
+				<input type="password" id="password" class="form-control" formControlName="password" placeholder="新的密码" focus="true" required>
+                <label for="password" class="float-label">新的密码</label>
+			</li>
+		</ul>
+		<div class="button">
+			<button type="submit" class="btn btn-primary btn-block">重设密码</button>
+		</div>
+	</form>
+</div>
+<div class="panel-verify" *ngIf="confirm">
+	<div *ngIf="!resetStatus">
+		<h2>重新设置密码</h2>
+		<p class="msg">{{msg}}</p>
+	</div>
+	<div *ngIf="resetStatus">
+		<h2>设置成功</h2>
+		<p class="msg"><span>现在</span><a [routerLink]="['/login']">登录FEMock</a><span>开始你的旅程吧</span>!</p>
+	</div>
+</div>

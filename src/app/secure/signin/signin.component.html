@@ -1,0 +1,33 @@
+<div class="auth-form">
+    <h1>FEMock</h1>
+    <h2>登录</h2>
+    <form novalidate [formGroup]="signInForm" (validSubmit)="onSubmit()">
+        <ul class="items">
+            <li class="form-group">
+                <input type="text" id="email" class="form-control" formControlName="email" placeholder="邮箱地址" focus="true" required>
+                <label for="email" class="float-label">邮箱地址</label>
+            </li>
+            <li class="form-group">
+                <input type="password" id="password" class="form-control" formControlName="password" placeholder="密码" required>
+                <label for="password" class="float-label">密码</label>
+            </li>
+            <li class="form-group code" *ngIf="params.validate">
+                <input type="text" id="validateCode" class="form-control" formControlName="validateCode" placeholder="验证码" required>
+                <label for="validateCode" class="float-label">验证码</label>
+                <img src="" class="captcha-image" captchaImage>
+            </li>
+            <li class="remember">
+                <input type="checkbox" id="remember" formControlName="remember" placeholder="">
+                <label for="remember">记住FEMock ID</label>
+                <span class="pull-right"><a [routerLink]="['/forget_reset']">忘记密码?</a></span>
+            </li>
+        </ul>
+        <div class="button">
+            <button type="submit" class="btn btn-primary btn-block">登陆</button>
+        </div>
+    </form>
+    <div class="other">
+        <p>没有FEMock ID? <a [routerLink]="['/register']">现在创建</a></p>
+    </div>
+</div>
+<div id="particles"></div>

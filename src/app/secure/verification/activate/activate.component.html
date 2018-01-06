@@ -1,0 +1,6 @@
+<div class="panel-verify">
+	<h2 translate>激活 FEMock ID</h2>
+	<p class="msg">{{msg}}</p>
+	<a [routerLink]="['/login']" class="btn btn-success btn-lg" *ngIf="!confirm" translate>立即登录</a>
+	<a [routerLink]="['/login']" class="btn btn-info btn-lg" *ngIf="confirm" translate>重新注册</a>
+</div>

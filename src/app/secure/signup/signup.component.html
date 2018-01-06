@@ -1,0 +1,30 @@
+<div class="auth-form">
+    <h1>FEMock</h1>
+	<h2>创建账号</h2>
+	<form novalidate [formGroup]="signUpForm" (validSubmit)="onSubmit()">
+		<ul class="items">
+			<li class="form-group">
+				<input type="text" id="email" class="form-control" formControlName="email" placeholder="邮箱地址" focus="true" required>
+                <label for="email" class="float-label">邮箱地址</label>
+			</li>
+			<li class="form-group">
+				<input type="password" id="password" class="form-control" formControlName="password" placeholder="登录密码" required>
+                <label for="password" class="float-label">登录密码</label>
+			</li>
+			<li class="form-group">
+				<input type="password" id="repasswd" class="form-control" formControlName="repasswd" placeholder="确认密码" required>
+                <label for="repasswd" class="float-label">确认密码</label>
+			</li>
+			<li class="form-group code">
+				<input type="text" id="validateCode" class="form-control" formControlName="validateCode" placeholder="验证码" required>
+                <label for="validateCode" class="float-label">验证码</label>
+				<img src="" class="captcha-image" captchaImage>
+			</li>
+		</ul>
+		<div class="button">
+			<button type="submit" class="btn btn-primary btn-block">注册</button>
+		</div>
+	</form>
+	<p style="padding: 10px 0">已有账号? <a [routerLink]="['/login']">登陆</a></p>
+</div>
+<div id="particles"></div>

@@ -1,0 +1,11 @@
+<div class="panel-verify" style="text-align:left; line-height: 2.2;">
+    <h2 style="text-align:center; margin-bottom:15px;">欢迎注册FEMock！</h2>
+    <p>我们已经给您发了一封<b>激活邮件</b>。</p>
+    <p>通过邮件中的链接<b>激活您的帐户</b>后，您就可以<a [routerLink]="['/login']">登录</a>。</p>
+    <p>如果未收到激活邮件，您可以
+        <button type="button" class="btn btn-info" [disabled]="verify.disabled" style="width:auto;" (click)="resendActivateMail()">{{verify.text}}</button>
+    </p>
+    <p>如果重发激活邮件仍然没有收到，请检查一下是否在垃圾邮箱中。</p>
+    <br/>
+    <p>注：遇到任何问题，请发邮件至 service@femock.com 与我们联系。</p>
+</div>
