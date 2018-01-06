@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { TestService } from './test/fe-test';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -8,15 +7,15 @@ import { TestService } from './test/fe-test';
 })
 export class AppComponent implements OnInit {
 
-    constructor (private test: TestService) {}
+    constructor() {
+    }
 
-    ngOnInit (): void {
+    ngOnInit(): void {
 
     }
 
-    dialog () {
-        const res = this.test.dialog();
-        console.log('res == ', res);
+    dialog() {
+
     }
 
 }
