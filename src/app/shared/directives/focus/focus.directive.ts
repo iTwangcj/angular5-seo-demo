@@ -1,4 +1,5 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Inject, Input, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
     selector: '[focus]'
@@ -9,13 +10,15 @@ export class FocusDirective implements AfterViewInit {
     private element: HTMLElement;
     private hasFocused = false;
 
-    constructor (private $element: ElementRef) {
+    constructor (private $element: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) {
         this.element = $element.nativeElement;
     }
 
     ngAfterViewInit () {
-        // this.element = this.$element.nativeElement;
-        this.giveFocus();
+        if (isPlatformBrowser(this.platformId)) {
+            // this.element = this.$element.nativeElement;
+            this.giveFocus();
+        }
     }
 
     giveFocus () {

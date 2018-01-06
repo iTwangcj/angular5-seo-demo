@@ -1,6 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpService } from '../../service/http.service';
 import { Message } from '../../utils';
 import { PATTERNS } from '../../shared/validate/tokens';
@@ -25,7 +26,8 @@ export class SignupComponent implements OnInit {
                  private router: Router,
                  private fb: FormBuilder,
                  private http: HttpService,
-                 private captchaService: CaptchaService) {
+                 private captchaService: CaptchaService,
+                 @Inject(PLATFORM_ID) private platformId: Object) {
     }
 
     ngOnInit () {
@@ -36,7 +38,9 @@ export class SignupComponent implements OnInit {
             repasswd: this.fb.control('', [Validators.required, this.patterns.equalTo(password)]),
             validateCode: ['']
         });
-        particlesJS.load('particles', './assets/particles.json');
+        if (isPlatformBrowser(this.platformId)) {
+            particlesJS.load('particles', './assets/particles.json');
+        }
     }
 
     onSubmit () {

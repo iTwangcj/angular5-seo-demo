@@ -46,8 +46,8 @@ export class SigninComponent implements OnInit {
             remember: [''],
             validateCode: ['']
         });
-        particlesJS.load('particles', './assets/particles.json');
         if (isPlatformBrowser(this.platformId)) {
+            particlesJS.load('particles', './assets/particles.json');
             this.initLoginNum();
         }
     }
