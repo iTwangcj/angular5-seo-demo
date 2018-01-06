@@ -1,0 +1,28 @@
+// Navs
+// --------------------------------------------------
+
+.nav { float: left; height: 56px;
+    > li { float: left; list-style: none; height: 56px; line-height: 56px; font-size: 16px; font-weight: 400; letter-spacing: 0.2px; position: relative;
+        > a { display: block; padding: 0 20px; color: inherit;
+            &:hover { .opacity(.7); text-decoration: none; }
+            &:focus, &:visited { text-decoration: none; }
+        }
+        &.active {
+            > a { background-color: rgba(0, 0, 0, .2); }
+        }
+    }
+    &.user { position: absolute; right: 15px; top: 0;
+        > li {font-size: 12px; height:25px; line-height:25px; margin:16px 0 0 15px;
+            a > {padding: 0 10px; border:1px solid @gray-light;
+                .border-radius(@border-radius-base);
+                &:hover{ .opacity(1); color: @gray-lighter;}
+            }
+        }
+    }
+}
+@media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 800px) {
+
+}
+@media only screen and (max-width: 1100px) {
+
+}

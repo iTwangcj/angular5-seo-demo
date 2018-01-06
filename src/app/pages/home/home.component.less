@@ -1,0 +1,51 @@
+@import "../../../theme/mixin.less";
+
+// Home
+.sky-night {
+    position: relative; width: 100%; color: #ffffff; overflow: hidden;
+    //background-color: #092d6c;
+    //background-image: linear-gradient(-180deg, #092d6c 0, #10659c 40%, #7babbf 68%, #e9dea4 100%, #ff9a4a 100%);
+    //background-repeat: no-repeat;
+    //background-color: #3367d6;
+    //background: linear-gradient(45deg, #3367d6, #4170d4);
+    background-color: #eb816f;
+    //background-image: linear-gradient(#4f485c, #eb816f);
+    background-image: linear-gradient(#656f8d, #eb816f);
+    .stars {
+        background: url('../../../assets/img/stars.svg') center bottom no-repeat;
+    }
+}
+.intro {
+    position: relative; z-index: 3;
+    background-image: url('../../../assets/img/building.png');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-size: 100%;
+    text-align: center; font-weight: 300;
+    h2 { font-size: 60px; padding-top: 90px; font-weight: 300; }
+    .text { padding: 60px 0; font-size: 22px; line-height: 1.8; }
+    .start-using { padding-bottom: 60px;
+        .btn { font-size: 18px; padding: 12px 25px; background-color: #2b4a55; color: #ffffff; border-color: transparent; .border-radius(@border-radius-base);
+            &:hover {.opacity(.85);}
+        }
+    }
+}
+.announcement-bar {
+    margin: 0 auto; padding: 15px; min-height: 20px; line-height: 20px; font-size: 16px; text-align: center; font-weight: 300;
+    //background-color:#ffffff; box-shadow:0 4px 4px rgba(0, 0, 0, 0.24), 0 0 4px rgba(0, 0, 0, 0.12);
+}
+.virtue { padding: 60px 0; max-width: 1100px; margin: 0 auto; overflow: hidden; zoom: 1;
+    dl { float: left; width: 33%; font-weight: 300;
+        dt { margin-bottom: 15px; font-size: 24px; font-weight: 300; text-align: center; }
+        dd { padding: 0 15px; font-size: 16px; }
+    }
+}
+.using-stat { text-align: center; padding: 30px 0; font-weight: 300; }
+#particles2 {
+    position: absolute; left: 0; top: 0; z-index: 1;
+    width: 100%; height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}

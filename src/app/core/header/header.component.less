@@ -1,0 +1,27 @@
+@import "../../../theme/mixin.less";
+#header {
+    h1 { float: left; width: 160px; height: 56px; line-height: 56px; font-size: 20px; font-weight: 400; color: #ffffff; text-align: left; overflow: hidden;
+        a { color: #ffffff; display: inline-block; padding: 0 15px;
+            &:hover, &:focus { text-decoration: none; }
+        }
+        small { font-weight: 200; font-size: 14px; color: #ffffff; }
+        sub { font-weight: 200; font-size: 10px; bottom: 0; margin-left: -3px; }
+    }
+}
+.nav-items { float: left; height: 56px; position: relative;
+    .bars { float: left; width: 50px; height: 56px; line-height: 56px; font-size: 18px; font-weight: 300; text-align: center; color: inherit; cursor: pointer; display: none; }
+}
+@media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 800px) {
+    #header {
+        h1 { position: absolute; left: 0; top: 0; right: 0; width: 100%; padding: 0; text-align: center;
+            small, sub { display: none; }
+            a { padding: 0; }
+        }
+    }
+    .nav-items { position: absolute; left: 0;
+        .bars { display: block; }
+        &.dropdown-active {
+            .nav { width: 100%; z-index: @zindex-dropdown; display: block; visibility: visible; .opacity(1); transform: none; transition-delay: 0s; background-color: #1976d2; }
+        }
+    }
+}

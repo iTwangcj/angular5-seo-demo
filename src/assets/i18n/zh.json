@@ -1,0 +1,25 @@
+{
+	"signUp": {
+		"title": "创建 FEMock ID",
+		"email": "邮箱",
+		"password": "密码",
+		"rePwd": "确认密码",
+		"code": "验证码",
+		"clickHere": "请点击这里登录",
+		"existing": "已有 FEMock ID",
+		"signUp": "创建账户",
+		"agree": "我已阅读并同意",
+		"protocol": "用户注册协议"
+	},
+	"signIn": {
+		"title": "登录FEMock",
+		"email": "会员名/邮箱",
+		"password": "密码",
+		"validateCode": "验证码",
+		"remember": "记住我的",
+		"forgetPwd": "忘记密码",
+		"signIn": "登录",
+		"signUp": "立即创建",
+		"no": "没有"
+	}
+}

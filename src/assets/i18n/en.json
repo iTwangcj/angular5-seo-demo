@@ -1,0 +1,25 @@
+{
+	"signUp": {
+		"title": "Create FEMock ID",
+		"email": "Email",
+		"password": "Password",
+		"rePwd": "Confirm Password",
+		"code": "Verification Code",
+		"clickHere": "Please Click Here SignIn",
+		"existing": "Existing FEMock ID",
+		"signUp": "SignUp",
+		"agree": "I have read and agreed",
+		"protocol": "FEMock User registration agreement"
+	},
+	"signIn": {
+		"title": "SignIn FEMock",
+		"email": "FEMockID/Email",
+		"password": "Password",
+		"validateCode": "Validate Code",
+		"remember": "Remember",
+		"forgetPwd": "Forget Password",
+		"signIn": "SignIn",
+		"signUp": "SignUp",
+		"no": "No"
+	}
+}

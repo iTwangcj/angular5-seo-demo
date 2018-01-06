@@ -1,0 +1,21 @@
+// Grid system
+// --------------------------------------------------
+
+.container-fixed(@gutter: @grid-gutter-width) {
+	margin-right: auto;
+	margin-left: auto;
+	//width:@container-min-width;
+	min-width: @container-min-width;
+	@media (min-width: @screen-sm-min) {
+		max-width: @container-sm;
+	}
+	@media (min-width: @screen-md-min) {
+		max-width: @container-md;
+	}
+	@media (min-width: @screen-lg-min) {
+		max-width: @container-lg;
+	}
+	//padding-left:@gutter;
+	//padding-right:@gutter;
+	&:extend(.clearfix all);
+}

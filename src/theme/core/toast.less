@@ -1,0 +1,47 @@
+// Toast
+// --------------------------------------------------
+#toast-container { position: fixed; z-index: @zindex-toast;
+	.toast {
+		position: relative; min-width: 200px; max-width: 400px; margin: auto; padding: 15px; color: #ffffff; .border-radius(@border-radius-base);
+		background-color: rgba(3, 3, 3, .8); font-size: inherit; line-height: 1.4; overflow: hidden;
+		&:hover { .box-shadow(0 0 12px #000000); }
+		&.toast-success { background: rgba(81, 163, 81, .8) }
+		&.toast-error { background: rgba(189, 54, 47, .8) }
+		&.toast-info { background: rgba(47, 150, 180, .8) }
+		&.toast-warning { background: rgba(248, 148, 6, .8) }
+		&.toast-network { background: rgba(47, 150, 180, .3) }
+		&.toast-progress { position: absolute; right: 0; bottom: 0; left: 0; height: 4px; background-color: rgba(0, 0, 0, 0.3) }
+		.toast-title { font-weight: bold }
+		.toast-message { word-wrap: break-word;
+			a { color: #ffffff;
+				&:hover, &:focus { text-decoration: none; color: #cccccc }
+			}
+		}
+	}
+	&.toast-top-center { top: 56px; }
+	&.toast-bottom-center { bottom: 15px; }
+	&.toast-top-full-width { top: 56px; width: 100%; }
+	&.toast-bottom-full-width { bottom: 15px; width: 100%; }
+	&.toast-top-left { left: 15px; top: 56px; }
+	&.toast-top-right { right: 15px; top: 56px; }
+	&.toast-bottom-right { right: 15px; bottom: 15px }
+	&.toast-bottom-left { left: 15px; bottom: 15px; }
+	&.toast-top-full-width, &.toast-bottom-full-width {
+		.toast { min-width: 96%; max-width: 96%; }
+	}
+	.toast-close-button {
+		font-size: 20px; font-weight: bold; position: relative; top: -.3em; right: -.3em; float: right; color: #ffffff;
+		&:hover, &:focus { text-decoration: none; color: #000000 }
+		&.toast-close-button { padding: 0; border: 0; background-color: transparent; -webkit-appearance: none }
+	}
+}
+
+@media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 800px) {
+	#toast-container { width: 100%;
+		&.toast-top-left { left: 0; }
+		&.toast-top-right { right: 0; }
+		&.toast-bottom-right { right: 0; }
+		&.toast-bottom-left { left: 0; }
+		.toast { min-width: 96%; max-width: 96%; }
+	}
+}

@@ -1,0 +1,22 @@
+<div id="header">
+    <h1><a [routerLink]="['/']">FEMock</a></h1>
+    <div class="nav-items dropdown" dropdown>
+        <span class="bars">☰</span>
+        <ul class="nav">
+            <li><a [routerLink]="['/']">首页</a></li>
+            <li [routerLinkActive]="['active']"><a [routerLink]="['/teams']">团队</a></li>
+            <li [routerLinkActive]="['active']"><a [routerLink]="['/projects']">项目</a></li>
+            <li [routerLinkActive]="['active']"><a [routerLink]="['/stat']">统计</a></li>
+            <li [routerLinkActive]="['active']"><a [routerLink]="['/docs']">文档</a></li>
+            <!--<li [routerLinkActive]="['active']"><a [routerLink]="['/tools']">工具</a></li>-->
+        </ul>
+    </div>
+    <ul class="nav user" *ngIf="!user.name">
+        <li><a [routerLink]="['/login']">登录</a></li>
+        <li><a [routerLink]="['/register']">注册</a></li>
+    </ul>
+    <ul class="nav user" *ngIf="user.name">
+        <li><a [routerLink]="['/account']">{{user.name}}</a></li>
+        <li><a href="javascript:;" (click)="logout()">退出</a></li>
+    </ul>
+</div>
