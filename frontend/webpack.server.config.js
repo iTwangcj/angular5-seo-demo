@@ -12,7 +12,7 @@ fs.readdirSync('node_modules')
 module.exports = {
     entry: {
         // This is our Express server for Dynamic universal
-        server: path.join(__dirname, '../backend/server.ts')
+        server: path.join(__dirname, '../backend/.tmp/server.ts')
     },
     resolve: {extensions: ['.ts', '.js']},
     output: {

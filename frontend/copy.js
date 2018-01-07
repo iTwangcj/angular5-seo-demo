@@ -6,25 +6,25 @@ const _ = require('lodash');
 const execSync = require('child_process').execSync;
 
 program
-.version('0.0.1')
-.option('-e, --env [type]', 'Add environment')
-.option('-b, --bundle [type]', 'Add server bundle')
-.parse(process.argv);
+    .version('0.0.1')
+    .option('-e, --env [type]', 'Add environment')
+    .option('-b, --bundle [type]', 'Add server bundle')
+    .parse(process.argv);
 
 const Env = program['env'] || 'dev';
 const tmpDir = 'backend/.tmp';
 
 const Tools = {
-    
+
     /**
      * 获取指定根目录
      * @param dir
      * @returns {string}
      */
     baseDirPath: (dir) => {
-        return path.resolve(__dirname, /*'..',*/ dir);
+        return path.resolve(__dirname, '..', dir);
     },
-    
+
     /**
      * 文本替换
      * @param filePath
@@ -38,7 +38,7 @@ const Tools = {
             fs.writeFileSync(filePath, fileBody, { encoding: 'utf8' });
         }
     },
-    
+
     /**
      * 休眠
      * @param second
@@ -49,7 +49,7 @@ const Tools = {
         while (waitUntil > new Date()) {
         }
     },
-    
+
     /**
      * 文件拷贝
      * @param targetDir
@@ -62,7 +62,7 @@ const Tools = {
         const dist = Tools.baseDirPath(tmpDir);
         execSync(`rm -rf ${dist}`);
         fse.ensureDirSync(dist); // 文件目录不存在则创建
-        
+
         const files = Tools.getAllFiles(src);
         let count = 0, overFlag = false;
         for (const file of files) {
@@ -85,7 +85,7 @@ const Tools = {
             }
         }
     },
-    
+
     /**
      * 获取文件夹下面的所有的文件(包括子文件夹)
      * @param {String} dir
@@ -105,7 +105,7 @@ const Tools = {
         iteration(dir);
         return AllFiles;
     },
-    
+
     /**
      * 删除目录及其子文件
      * @param path
@@ -125,12 +125,12 @@ const Tools = {
             fs.rmdirSync(path);
         }
     },
-    
+
     /**
      * seo 服务端文件编译替换
      */
     serverBundle: () => {
-        let serverPath = path.join(__dirname, /*'..',*/ `/${tmpDir}/server.ts`);
+        let serverPath = path.join(__dirname, `../${tmpDir}/server.ts`);
         const data = fs.readFileSync(serverPath, 'utf8');
         const lines = data.split('\n');
         let begin = 0;
@@ -156,24 +156,25 @@ const Tools = {
 // 拷贝后端所有文件,避免操作源文件
 Tools.copy('backend', ['logs', 'test'], () => {
     // update config
-    const filePath = path.join(__dirname, /*'..', */`/${tmpDir}/config/index.ts`);
+    const filePath = path.join(__dirname, '..', `/${tmpDir}/config/index.ts`);
     if (fs.existsSync(filePath)) {
         Tools.replaceText(filePath, /dev/, Env);
         Tools.replaceText(filePath, /\.\/environment\.[\S]+/, './environment.' + Env + '\';');
     }
     // update server.ts
-    const serverPath = path.join(__dirname, /*'..',*/ `/${tmpDir}/server.ts`);
+    const serverPath = path.join(__dirname, `../${tmpDir}/server.ts`);
     if (fs.existsSync(serverPath)) {
-        // Tools.replaceText(serverPath, /frontend\/dist/g, '../frontend/dist');
-        Tools.replaceText(serverPath, /\.\.\/dist/g, '../../dist');
+        Tools.replaceText(serverPath, /frontend\//g, '../frontend/');
     }
     // dynamic update config env
     if (Env === 'dev' || Env === 'test') {
         // update production
-        const confDevFilePath = path.join(__dirname, /*'..',*/ `/${tmpDir}/config/environment.${Env.toLowerCase()}.ts`);
-        Tools.replaceText(confDevFilePath, /production:\s*false/, 'production: true');
+        const confDevFilePath = path.join(__dirname, `../${tmpDir}/config/environment.${Env.toLowerCase()}.ts`);
+        if (fs.existsSync(confDevFilePath)) {
+            Tools.replaceText(confDevFilePath, /production:\s*false/, 'production: true');
+        }
     }
-    
+
     if (program['bundle']) {
         Tools.serverBundle();
     }

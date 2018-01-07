@@ -7,6 +7,7 @@ import 'reflect-metadata';
 import 'zone.js/dist/zone-node';
 import * as express from 'express';
 import * as compression from 'compression';
+import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import {join} from 'path';
 import {enableProdMode} from '../frontend/node_modules/@angular/core';
@@ -28,6 +29,7 @@ app.use(bodyParser.json({limit: '5024kb'}));
 app.use(bodyParser.json({type: 'application/vnd.app+json', limit: '5024kb'}));
 app.use(bodyParser.urlencoded({extended: false}));
 // Define the cookie parser
+app.use(cookieParser());
 
 const DIST_FOLDER = join(__dirname, '..', 'dist');
 

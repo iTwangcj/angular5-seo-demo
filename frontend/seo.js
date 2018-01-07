@@ -4,7 +4,7 @@ require('shelljs/global');
 const chalk = require('chalk');
 const path = require('path');
 const program = require('commander');
-const tmpDir = path.join(__dirname, './backend/.tmp');
+const tmpDir = path.join(__dirname, '../backend/.tmp');
 
 program.version('0.0.1').option('-e, --env [type]', 'Add environment').parse(process.argv);
 
@@ -25,7 +25,7 @@ return global.Promise.resolve()
 .then(() => global.exec(`ng build --prod --aot -e ${EnvLower} --app 1 --output-hashing=false`))
 .then(() => global.echo(chalk.green('SEO server compilation completed.')))
 .then(() => global.echo(chalk.blue('Start Backend files copy...')))
-// .then(() => global.exec(`node copy --env=${EnvLower}`))
+.then(() => global.exec(`node copy --env=${EnvLower}`))
 .then(() => global.echo(chalk.green('Backend files copy completed.')))
 .then(() => global.echo(chalk.blue('Start Webpack compilation...')))
 .then(() => global.exec(`webpack --config webpack.server.config.js --progress --colors`))
