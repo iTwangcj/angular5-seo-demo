@@ -30,9 +30,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Define the cookie parser
 
 const DIST_FOLDER = join(__dirname, '..', 'dist');
+console.log('DIST_FOLDER === ', DIST_FOLDER);
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../dist/server/main.bundle');
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../frontend/dist/server/main.bundle');
 
 app.engine('html', ngExpressEngine({
 	bootstrap: AppServerModuleNgFactory,
